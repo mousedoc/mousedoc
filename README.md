@@ -1,2 +1,1 @@
-# This is Bodle
-![](./bodle.jpg)
+// TODO : Add some shit
