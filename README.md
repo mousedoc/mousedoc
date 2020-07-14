@@ -1,1 +1,2 @@
-something new
+This is Bodle
+![](./bodle.jpg)
