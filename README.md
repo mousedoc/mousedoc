@@ -7,9 +7,12 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mousedoc&layout=compact" width="350px" />
 </a>
 
-### Summary
+---  
+
+### Summary  
 - Game client programmer
 
+---  
 ### Interested
   - Optimization, Statistics
   - Dev-ops
