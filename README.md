@@ -1,10 +1,10 @@
 ### Statistics
 
 <a href="https://github.com/anuraghazra/github-readme-stats">
-  <img src="https://github-readme-stats.vercel.app/api?username=mousedoc&count_private=true&show_icons=true&include_all_commits=true" width="430px" />
+  <img src="https://github-readme-stats.vercel.app/api?username=mousedoc&count_private=true&show_icons=true&include_all_commits=true&theme=algolia&bg_color=0d1117" width="430px" />
 </a>
 <a href="https://github.com/anuraghazra/github-readme-stats">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mousedoc&layout=compact" width="360px" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mousedoc&layout=compact&theme=algolia&bg_color=0d1117" width="360px" />
 </a>
 
 ---  
