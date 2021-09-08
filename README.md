@@ -13,7 +13,7 @@
 > Game client programmer  
 
 ### Interested
-> Rust
+> Rust  
 > Optimization, Statistics  
 > Dev-ops  
 > PyTorch  
