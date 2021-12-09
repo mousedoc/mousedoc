@@ -19,7 +19,3 @@
 > PyTorch  
 
 --- 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/mousedoc/mousedoc/output/github-contribution-grid-snake.svg">
-</p>
