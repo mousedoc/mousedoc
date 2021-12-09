@@ -17,5 +17,3 @@
 > Optimization, Statistics  
 > Dev-ops  
 > PyTorch  
-
---- 
