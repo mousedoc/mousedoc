@@ -14,14 +14,3 @@
 <a href="https://github.com/anuraghazra/github-readme-stats">
   <img src="https://github-readme-stats.vercel.app/api?username=mousedoc&count_private=true&show_icons=true&include_all_commits=true&theme=algolia&bg_color=0d1117&rank_icon=github" width="405px" />
 </a>
-
----  
-
-### Summary  
-> Game client programmer  
-
-### Interested
-> Rust  
-> Optimization, Statistics  
-> Dev-ops  
-> PyTorch  
