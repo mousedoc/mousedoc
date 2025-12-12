@@ -51,3 +51,4 @@ jobs:
           plugin_languages_sections: recently-used
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
+          user: ${{ github.repository_owner }}
