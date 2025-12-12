@@ -1,0 +1,42 @@
+# 1. 워크플로 전체 이름 (파일당 하나)
+name: GitHub Metrics Generation
+
+# 2. 실행 조건 (예: 매일 한국 시간 04:00에 실행)
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC 19:00 = KST 04:00
+    - cron: '0 19 * * *' 
+
+jobs:
+  # 가장 많이 사용한 언어 통계 생성
+  most_used_languages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.languages.used.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
+          plugin_languages: yes
+          plugin_languages_ignored: >-
+            html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
+            gnuplot
+          plugin_languages_limit: 8
+
+  # 최근 사용한 언어 통계 생성 (다른 파일에 저장)
+  recently_used_languages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.languages.used-recent.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
+          plugin_languages: yes
+          plugin_languages_ignored: >-
+            html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
+            gnuplot
+          plugin_languages_sections: recently-used
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 8
