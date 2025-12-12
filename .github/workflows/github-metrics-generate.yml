@@ -9,6 +9,17 @@ on:
     - cron: '0 19 * * *' 
 
 jobs:
+  # 클래식 서머리
+  classic_summary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.classic.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header, repositories
+          plugin_lines: yes
+
   # 가장 많이 사용한 언어 통계 생성
   most_used_languages:
     runs-on: ubuntu-latest
