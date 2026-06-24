@@ -35,7 +35,7 @@ jobs:
             gnuplot
           plugin_languages_limit: 8
 
-  # 최근 사용한 언어 통계 생성 (다른 파일에 저장)
+# 최근 사용한 언어 통계 생성 (다른 파일에 저장)
   recently_used_languages:
     runs-on: ubuntu-latest
     steps:
@@ -45,6 +45,7 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_languages: yes
+          plugin_languages_indepth: yes # 2번 방법: 인뎁스 분석 모드 활성화
           plugin_languages_ignored: >-
             html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
             gnuplot
