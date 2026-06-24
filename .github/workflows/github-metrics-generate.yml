@@ -13,18 +13,19 @@ jobs:
   classic_summary:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@v3
         with:
           filename: metrics.classic.svg
           token: ${{ secrets.METRICS_TOKEN }}
           base: header, repositories
           plugin_lines: yes
+          plugin_lines_sections: repositories
 
   # 가장 많이 사용한 언어 통계 생성
   most_used_languages:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@v3
         with:
           filename: metrics.plugin.languages.used.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -35,21 +36,21 @@ jobs:
             gnuplot
           plugin_languages_limit: 8
 
-# 최근 사용한 언어 통계 생성 (다른 파일에 저장)
+# 상세 언어 통계 생성 (인뎁스 분석, bytes-size/percentage 포함)
   recently_used_languages:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@v3
         with:
           filename: metrics.plugin.languages.used-recent.svg
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_languages: yes
-          plugin_languages_indepth: yes # 2번 방법: 인뎁스 분석 모드 활성화
+          plugin_languages_indepth: yes
           plugin_languages_ignored: >-
             html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
             gnuplot
-          plugin_languages_sections: recently-used
+          plugin_languages_sections: most-used
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
           user: ${{ github.repository_owner }}
