@@ -25,7 +25,7 @@
                     <rect mask="url(#languages-bar)" x="0" y="0" width="146.66210610545133" height="8" fill="#7355dd"/>
                     <rect mask="url(#languages-bar)" x="146.66210610545133" y="0" width="141.5939411113372" height="8" fill="#f1e05a"/>
                     <rect mask="url(#languages-bar)" x="288.2560472167885" y="0" width="72.29801103772324" height="8" fill="#3572A5"/>
-                    <rect mask="url(#languages-bar)" x="360.55405825451174" y="0" width="54.6312124643134" height="8" fill="#5686a5"/>
+                    <rect mask="url(#languages-bar)" x="360.55405825451174" y="0" width="54.6312124643134" height="8" fill="#222c37"/>
                     <rect mask="url(#languages-bar)" x="415.18527071882517" y="0" width="14.669311459283882" height="8" fill="#ededed"/>
                     <rect mask="url(#languages-bar)" x="429.854582178109" y="0" width="13.832082299821113" height="8" fill="#aace60"/>
                     <rect mask="url(#languages-bar)" x="443.68666447793015" y="0" width="13.252682970673012" height="8" fill="#dea584"/>
@@ -98,9 +98,9 @@
                         <div class="field language details">
                             <div class="field">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                    <path fill="#5686a5" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
+                                    <path fill="#222c37" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
                                 </svg>
-                                GLSL
+                                ShaderLab
                             </div>
                             <small>
                                 <div>95.1 kB</div>
