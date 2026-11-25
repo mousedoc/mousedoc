@@ -6,44 +6,88 @@ on:
   workflow_dispatch:
   schedule:
     # UTC 19:00 = KST 04:00
-    - cron: '0 19 * * *' 
+    - cron: '0 19 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-metrics-${{ github.ref }}
 
 jobs:
   # 클래식 서머리
   classic_summary:
     runs-on: ubuntu-latest
+    env:
+      METRICS_FILENAME: metrics.classic.svg
     steps:
+      - &checkout
+        uses: actions/checkout@v6
       - uses: lowlighter/metrics@latest
         with:
-          filename: metrics.classic.svg
+          filename: ${{ env.METRICS_FILENAME }}
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: none
           base: header, repositories
           plugin_lines: yes
           plugin_lines_sections: repositories
+      - &commit_metrics
+        name: Commit and push metrics
+        shell: bash
+        run: |
+          cp "/metrics_renders/$METRICS_FILENAME" "$METRICS_FILENAME"
+          git add -- "$METRICS_FILENAME"
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+
+          git config user.name mousedoc
+          git config user.email sangyun3631@gmail.com
+          git commit -m "Update $METRICS_FILENAME - [Skip GitHub Action]"
+
+          # 다른 통계 작업이 먼저 푸시하면 최신 커밋 위에 적용합니다.
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:$GITHUB_REF"; then
+              exit 0
+            fi
+            if [[ "$attempt" == 3 ]]; then
+              exit 1
+            fi
+            git pull --rebase origin "$GITHUB_REF"
+          done
 
   # 가장 많이 사용한 언어 통계 생성
   most_used_languages:
     runs-on: ubuntu-latest
+    env:
+      METRICS_FILENAME: metrics.plugin.languages.used.svg
     steps:
+      - *checkout
       - uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.languages.used.svg
+          filename: ${{ env.METRICS_FILENAME }}
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: none
           base: ""
           plugin_languages: yes
           plugin_languages_ignored: >-
             html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
             gnuplot
           plugin_languages_limit: 8
+      - *commit_metrics
 
 # 상세 언어 통계 생성 (인뎁스 분석, bytes-size/percentage 포함)
   recently_used_languages:
     runs-on: ubuntu-latest
+    env:
+      METRICS_FILENAME: metrics.plugin.languages.used-recent.svg
     steps:
+      - *checkout
       - uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.languages.used-recent.svg
+          filename: ${{ env.METRICS_FILENAME }}
           token: ${{ secrets.METRICS_TOKEN }}
+          output_action: none
           base: ""
           plugin_languages: yes
           plugin_languages_indepth: yes
@@ -54,3 +98,4 @@ jobs:
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
           user: ${{ github.repository_owner }}
+      - *commit_metrics
